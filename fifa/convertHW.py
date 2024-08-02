@@ -4,10 +4,10 @@ import pandas as pd
 file_path = "./fifa21.csv"
 df = pd.read_csv(file_path)
 
-# Display the first few rows of the dataframe to understand the structure
+# Display the first few row
 print(df.head())
 
-# Function to convert height in the format '5'7"' to inches
+# Convert height in the format '5'7"' to inches
 def convert_height(height):
     try:
         feet, inches = height.split("'")
@@ -15,7 +15,7 @@ def convert_height(height):
     except:
         return None
 
-# Function to convert weight in the format '165lbs' to integer
+# Convert weight in the format '165lbs' to integer
 def convert_weight(weight):
     try:
         return int(weight.replace('lbs', ''))
@@ -29,3 +29,4 @@ df['Weight'] = df['Weight'].apply(convert_weight)
 
 print(df.head())
 
+df.to_csv('./fifa21_h&w_conversions.csv', index=False)
